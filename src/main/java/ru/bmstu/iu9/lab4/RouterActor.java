@@ -16,7 +16,7 @@ public class RouterActor extends AbstractActor {
     private final ActorRef storage;
 
     public RouterActor() {
-        storage = getContext().actorOf(Props.create(StrorageActor.class));
+        storage = getContext().actorOf(Props.create(StorageActor.class));
         router = getContext().actorOf(new RoundRobinPool(POOL_SIZE).props(Props.create(TesterActor.class)), ROUTER_NAME);
     }
 

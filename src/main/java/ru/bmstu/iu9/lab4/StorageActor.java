@@ -1,4 +1,4 @@
 package ru.bmstu.iu9.lab4;
 
-public class StrorageActor {
+public class StorageActor {
 }
