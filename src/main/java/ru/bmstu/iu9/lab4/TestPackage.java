@@ -12,8 +12,8 @@ public class TestPackage {
     private final List<Test> tests;
 
     public TestPackage(@JsonProperty("packageId") String id,
-                       @JsonProperty("") String script,
-                       @JsonProperty("") String funcName,
+                       @JsonProperty("jsScript") String script,
+                       @JsonProperty("functionName") String funcName,
                        @JsonProperty("") List<Test> tests) {
         this.id = id;
         this.script = script;
