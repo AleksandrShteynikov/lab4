@@ -28,6 +28,8 @@ public class JSTester {
     private static final String AKKA_SYSTEM_NAME = "Akka JS Tester";
     private static final String HOST_NAME = "localhost";
     private static final String SERVER_MSG = "Server online at http://" + HOST_NAME + ":" + PORT +"/\nPress RETURN to stop...";
+    private static final String URL_EXT = "api";
+    private static final String RET_MSG = "Test started";
     public static void main(String[] args) throws IOException {
         ActorSystem system = ActorSystem.create(AKKA_SYSTEM_NAME);
         ActorRef router = system.actorOf(Props.create(RouterActor.class));
@@ -45,13 +47,13 @@ public class JSTester {
 
     private Route createRoute(ActorRef router) {
         return route(
-                path("api", () -> route(get(() -> parameter(ID_PARAM, id -> {
+                path(URL_EXT, () -> route(get(() -> parameter(ID_PARAM, id -> {
                     Future<Object> result = Patterns.ask(router, id, TIMEOUT);
                     return completeOKWithFuture(result, Jackson.marshaller());
                 })))),
-                path("api", () -> route(post(() -> entity(Jackson.unmarshaller(TestPackage.class), msg -> {
+                path(URL_EXT, () -> route(post(() -> entity(Jackson.unmarshaller(TestPackage.class), msg -> {
                     router.tell(msg, ActorRef.noSender());
-                    return complete("Test started");
+                    return complete(RET_MSG);
                 }))))
         );
     }
