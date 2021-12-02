@@ -22,9 +22,10 @@ import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
 public class JSTester {
+    static final int PORT = 8080;
     static final String AKKA_SYSTEM_NAME = "Akka JS Tester";
-    static final String ROUTER_NAME = "router";
-    static final int POOL_SIZE = 5;
+    static final String HOST_NAME = "localhost";
+    static final String SERVER_MSG = "Server online at http://" + HOST_NAME + ":" + PORT. +"/\nPress RETURN to stop...";
     public static void main(String[] args) throws IOException {
         ActorSystem system = ActorSystem.create(AKKA_SYSTEM_NAME);
         ActorRef router = system.actorOf(Props.create(RouterActor.class));
@@ -41,8 +42,8 @@ public class JSTester {
     }
     private Route createRoute(ActorRef router) {
         return route(
-                path("api", () -> route(get(() -> parameter("", id -> {
-                    Future<Object> result = Patterns.ask(router, idrequest(), 5000);
+                path("api", () -> route(get(() -> parameter("packageId", id -> {
+                    Future<Object> result = Patterns.ask(router, id, 5000);
                     return completeOKWithFuture(result, Jackson.marshaller());
                 })))),
                 path("api", () -> route(post(() -> entity(Jackson.unmarshaller(TestPackage.class), msg -> {
