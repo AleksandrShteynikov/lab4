@@ -1,5 +1,7 @@
 package ru.bmstu.iu9.lab4;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class TestPackage {
@@ -9,7 +11,7 @@ public class TestPackage {
     private final String funcName;
     private final List<Test> tests;
 
-    public TestPackage() {
+    public TestPackage(@JsonProperty()) {
 
     }
 
