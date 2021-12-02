@@ -12,11 +12,10 @@ import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
+import akka.http.javadsl.server.Directives.*;
 
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
-
-import static akka.http.javadsl.server.Directives.route;
 
 public class JSTester {
     static final String AKKA_SYSTEM_NAME = "Akka JS Tester";
@@ -37,6 +36,8 @@ public class JSTester {
         binding.thenCompose(ServerBinding::unbind).thenAccept(unbound->system.terminate());
     }
     private Route createRoute(ActorSystem system) {
-        return route();
+        return route(
+                path("api", () -> route(get()))
+        );
     }
 }
