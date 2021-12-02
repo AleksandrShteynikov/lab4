@@ -22,12 +22,12 @@ import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
 public class JSTester {
-    static final int PORT = 8080;
-    static final int TIMEOUT = 5000;
-    static final String ID_PARAM = "packageId";
-    static final String AKKA_SYSTEM_NAME = "Akka JS Tester";
-    static final String HOST_NAME = "localhost";
-    static final String SERVER_MSG = "Server online at http://" + HOST_NAME + ":" + PORT +"/\nPress RETURN to stop...";
+    private static final int PORT = 8080;
+    private static final int TIMEOUT = 5000;
+    private static final String ID_PARAM = "packageId";
+    private static final String AKKA_SYSTEM_NAME = "Akka JS Tester";
+    private static final String HOST_NAME = "localhost";
+    private static final String SERVER_MSG = "Server online at http://" + HOST_NAME + ":" + PORT +"/\nPress RETURN to stop...";
     public static void main(String[] args) throws IOException {
         ActorSystem system = ActorSystem.create(AKKA_SYSTEM_NAME);
         ActorRef router = system.actorOf(Props.create(RouterActor.class));

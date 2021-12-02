@@ -6,8 +6,8 @@ import akka.actor.Props;
 import akka.routing.RoundRobinPool;
 
 public class RouterActor extends AbstractActor {
-    final static int POOL_SIZE = 5;
-    final static String ROUTER_NAME = "router";
+    private final static int POOL_SIZE = 5;
+    private final static String ROUTER_NAME = "router";
 
     private ActorRef router;
     private ActorRef storage;
