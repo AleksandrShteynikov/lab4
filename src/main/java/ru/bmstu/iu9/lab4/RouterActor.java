@@ -28,7 +28,9 @@ public class RouterActor extends AbstractActor {
                     String JSScript = testPackage.getScript();
                     String funcName = testPackage.getFuncName();
                     List<TestPackage.Test> tests = testPackage.getTests();
-                    for (test : )
+                    for (TestPackage.Test test : tests) {
+                        router.route();
+                    }
                 })
                 .match(String.class, id -> {
                     storage.tell(id, getSender());
