@@ -7,25 +7,26 @@ public class TestPackage {
     private final String id;
     private final String script;
     private final String funcName;
+    private final List<Test> tests;
 
     public TestPackage() {
 
     }
 
     public String getID() {
-        return null;
+        return id;
     }
 
     public String getFuncName() {
-        return null;
+        return funcName;
     }
 
     public String getScript() {
-        return null;
+        return script;
     }
 
     public List<Test> getTests() {
-        return null;
+        return tests;
     }
 
     static class Test {
