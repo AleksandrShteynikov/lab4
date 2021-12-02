@@ -21,7 +21,11 @@ public class RouterActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match()
-                .match(String.class ).build();
+                .match(TestPackage.class, testPackage -> {
+
+                })
+                .match(String.class, id -> {
+                    
+                }).build();
     }
 }
