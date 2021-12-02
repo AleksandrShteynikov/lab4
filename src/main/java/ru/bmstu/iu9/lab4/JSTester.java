@@ -11,6 +11,7 @@ import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
+import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 import scala.concurrent.Future;
@@ -41,7 +42,7 @@ public class JSTester {
     private Route createRoute(ActorRef router) {
         return route(
                 path("api", () -> route(get(() -> {
-                    Future<>
+                    Future<Object> result = Patterns.ask(testPackageActor, )
                 }))),
                 path("api", () -> route(post(() -> entity(Jackson.unmarshaller(TestPackage.class), msg -> {
                     router.tell(msg, ActorRef.noSender());
