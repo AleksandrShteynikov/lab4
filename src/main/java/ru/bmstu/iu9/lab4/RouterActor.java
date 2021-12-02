@@ -22,7 +22,10 @@ public class RouterActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(TestPackage.class, testPackage -> {
-                    String 
+                    String id = testPackage.getID();
+                    String JSScript = testPackage.getScript();
+                    String funcName = testPackage.getFuncName();
+                    
                 })
                 .match(String.class, id -> {
                     storage.tell(id, sender());
