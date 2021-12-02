@@ -25,14 +25,14 @@ public class JSTester {
     static final int PORT = 8080;
     static final String AKKA_SYSTEM_NAME = "Akka JS Tester";
     static final String HOST_NAME = "localhost";
-    static final String SERVER_MSG = "Server online at http://" + HOST_NAME + ":" + PORT. +"/\nPress RETURN to stop...";
+    static final String SERVER_MSG = "Server online at http://" + HOST_NAME + ":" + PORT +"/\nPress RETURN to stop...";
     public static void main(String[] args) throws IOException {
         ActorSystem system = ActorSystem.create(AKKA_SYSTEM_NAME);
         ActorRef router = system.actorOf(Props.create(RouterActor.class));
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         JSTester instance = new JSTester();
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = instance.createRoute(system).flow(system, materializer);
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = instance.createRoute(router).flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(routeFlow,
                                                                           ConnectHttp.toHost("localhost", 8080),
                                                                           materializer);
