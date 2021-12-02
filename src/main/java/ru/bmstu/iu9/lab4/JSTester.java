@@ -13,6 +13,8 @@ import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
+import scala.concurrent.Future;
+
 import static akka.http.javadsl.server.Directives.*;
 
 import java.io.IOException;
@@ -39,7 +41,7 @@ public class JSTester {
     private Route createRoute(ActorRef router) {
         return route(
                 path("api", () -> route(get(() -> {
-                    Future<Object>
+                    Future<>
                 }))),
                 path("api", () -> route(post(() -> entity(Jackson.unmarshaller(TestPackage.class), msg -> {
                     router.tell(msg, ActorRef.noSender());
