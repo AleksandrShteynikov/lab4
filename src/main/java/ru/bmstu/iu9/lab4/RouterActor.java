@@ -10,8 +10,8 @@ public class RouterActor extends AbstractActor {
     private final static int POOL_SIZE = 5;
     private final static String ROUTER_NAME = "router";
 
-    private ActorRef router;
-    private ActorRef storage;
+    private final ActorRef router;
+    private final ActorRef storage;
 
     public RouterActor() {
         storage = getContext().actorOf(Props.create(StrorageActor.class));
@@ -22,7 +22,7 @@ public class RouterActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(TestPackage.class, testPackage -> {
-
+                    
                 })
                 .match(String.class, id -> {
                     storage.tell(id, sender());
