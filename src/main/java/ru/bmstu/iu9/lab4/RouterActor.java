@@ -7,13 +7,14 @@ import akka.routing.RoundRobinPool;
 
 public class RouterActor extends AbstractActor {
     final static int POOL_SIZE = 5;
+    final static String ROUTER_NAME = "router";
 
     private ActorRef router;
     private ActorRef storage;
 
     public RouterActor() {
         storage = getContext().actorOf(Props.create(StrorageActor.class));
-        router = getContext().actorOf(new RoundRobinPool(5), );
+        router = getContext().actorOf(new RoundRobinPool(5).props(Props.create(TesterActor.class)), ROUTER_NAME);
     }
 
     @Override
