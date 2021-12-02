@@ -1,2 +1,4 @@
-package ru.bmstu.iu9.lab4;public class TestPackage {
+package ru.bmstu.iu9.lab4;
+
+public class TestPackage {
 }
