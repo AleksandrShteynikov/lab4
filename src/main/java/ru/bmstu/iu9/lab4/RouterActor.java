@@ -25,7 +25,7 @@ public class RouterActor extends AbstractActor {
                     String id = testPackage.getID();
                     String JSScript = testPackage.getScript();
                     String funcName = testPackage.getFuncName();
-
+                    List<Test> tests = testPackage.getTests();
                 })
                 .match(String.class, id -> {
                     storage.tell(id, getSender());
