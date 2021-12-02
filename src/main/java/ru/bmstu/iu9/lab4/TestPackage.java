@@ -11,7 +11,7 @@ public class TestPackage {
     private final String funcName;
     private final List<Test> tests;
 
-    public TestPackage(@JsonProperty()) {
+    public TestPackage(@JsonProperty("")) {
 
     }
 
