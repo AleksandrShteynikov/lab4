@@ -12,10 +12,11 @@ public class JSTester {
     static final String AKKA_SYSTEM_NAME = "Akka JS Tester";
     public static void main(String[] args) {
         ActorSystem system = ActorSystem.create(AKKA_SYSTEM_NAME);
+        
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         JSTester instance = new JSTester();
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = instance.createRoute(system).flow(system, materializer);
-        
+
     }
 }
