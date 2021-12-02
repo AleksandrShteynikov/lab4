@@ -16,6 +16,8 @@ import akka.stream.javadsl.Flow;
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
 
+import static akka.http.javadsl.server.Directives.route;
+
 public class JSTester {
     static final String AKKA_SYSTEM_NAME = "Akka JS Tester";
     static final String ROUTER_NAME = "router";
@@ -35,6 +37,6 @@ public class JSTester {
         binding.thenCompose(ServerBinding::unbind).thenAccept(unbound->system.terminate());
     }
     private Route createRoute(ActorSystem system) {
-        
+        return route();
     }
 }
