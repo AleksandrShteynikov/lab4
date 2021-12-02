@@ -14,7 +14,7 @@ public class TestPackage {
     public TestPackage(@JsonProperty("packageId") String id,
                        @JsonProperty("jsScript") String script,
                        @JsonProperty("functionName") String funcName,
-                       @JsonProperty("") List<Test> tests) {
+                       @JsonProperty("tests") List<Test> tests) {
         this.id = id;
         this.script = script;
         this.funcName = funcName;
@@ -38,6 +38,6 @@ public class TestPackage {
     }
 
     static class Test {
-
+        
     }
 }
