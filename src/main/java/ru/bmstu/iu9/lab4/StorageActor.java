@@ -8,14 +8,14 @@ import java.util.Map;
 
 public class StorageActor extends AbstractActor {
 
-    private Map<String, Object> results = new HashMap<>();
+    private Map<String, TestResult> results = new HashMap<>();
 
     public StorageActor() {}
 
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(SingleTest.class, test -> {
+                .match(TestResult.class, test -> {
                     putTestResult(test);
                 })
                 .match(String.class, id -> {
@@ -23,7 +23,7 @@ public class StorageActor extends AbstractActor {
                 }).build();
     }
 
-    private void putTestResult(SingleTest test) {
+    private void putTestResult(TestResult test) {
 
     }
 

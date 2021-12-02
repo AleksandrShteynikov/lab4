@@ -43,7 +43,6 @@ public class TestPackage {
         private final String testName;
         private final Object[] params;
         private final String expectedRes;
-        private String result;
 
         @JsonCreator
         public Test(@JsonProperty("testName") String testName,
@@ -54,20 +53,12 @@ public class TestPackage {
             this.expectedRes = expectedRes;
         }
 
-        public void setResult(String result) {
-            this.result = result;
-        }
-
         public String getTestName() {
             return testName;
         }
 
         public String getExpectedRes() {
             return expectedRes;
-        }
-
-        public String getResult() {
-            return result;
         }
 
         public Object[] getParams() {
