@@ -15,7 +15,7 @@ public class RouterActor extends AbstractActor {
 
     public RouterActor() {
         storage = getContext().actorOf(Props.create(StrorageActor.class));
-        router = getContext().actorOf(new RoundRobinPool(5).props(Props.create(TesterActor.class)), ROUTER_NAME);
+        router = getContext().actorOf(new RoundRobinPool(POOL_SIZE).props(Props.create(TesterActor.class)), ROUTER_NAME);
     }
 
     @Override
@@ -25,10 +25,10 @@ public class RouterActor extends AbstractActor {
                     String id = testPackage.getID();
                     String JSScript = testPackage.getScript();
                     String funcName = testPackage.getFuncName();
-                    
+
                 })
                 .match(String.class, id -> {
-                    storage.tell(id, sender());
+                    storage.tell(id, getSender());
                 }).build();
     }
 }
