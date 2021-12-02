@@ -7,12 +7,12 @@ public class RouterActor extends AbstractActor {
     private ActorRef router;
     private ActorRef storage;
 
+    public RouterActor() {
+        storage = getContext().actorOf();
+    }
+
     @Override
     public Receive createReceive() {
         return null;
-    }
-
-    public RouterActor() {
-
     }
 }
