@@ -38,9 +38,13 @@ public class JSTester {
     }
     private Route createRoute(ActorRef router) {
         return route(
-                path("api", () -> route(get())),
-                path("api", () -> route(post(() -> entity(Jackson.unmarshaller(TestPackage.class), msg ->
-                                                                  ))))
+                path("api", () -> route(get(() -> {
+                    Future<Object>
+                }))),
+                path("api", () -> route(post(() -> entity(Jackson.unmarshaller(TestPackage.class), msg -> {
+                    router.tell(msg, ActorRef.noSender());
+                    return complete("Test started");
+                }))))
         );
     }
 }
