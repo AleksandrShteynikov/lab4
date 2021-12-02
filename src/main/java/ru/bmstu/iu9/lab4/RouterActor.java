@@ -6,6 +6,8 @@ import akka.actor.ActorRef;
 import akka.actor.Props;
 import akka.routing.RoundRobinPool;
 
+import java.util.List;
+
 public class RouterActor extends AbstractActor {
     private final static int POOL_SIZE = 5;
     private final static String ROUTER_NAME = "router";
@@ -25,7 +27,8 @@ public class RouterActor extends AbstractActor {
                     String id = testPackage.getID();
                     String JSScript = testPackage.getScript();
                     String funcName = testPackage.getFuncName();
-                    List<Test> tests = testPackage.getTests();
+                    List<TestPackage.Test> tests = testPackage.getTests();
+                    for (test : )
                 })
                 .match(String.class, id -> {
                     storage.tell(id, getSender());
