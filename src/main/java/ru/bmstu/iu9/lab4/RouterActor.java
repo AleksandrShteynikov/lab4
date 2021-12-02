@@ -22,7 +22,7 @@ public class RouterActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(TestPackage.class, testPackage -> {
-                    
+                    String 
                 })
                 .match(String.class, id -> {
                     storage.tell(id, sender());
