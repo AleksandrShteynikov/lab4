@@ -40,6 +40,7 @@ public class TestPackage {
     }
 
     static class Test {
+        private final String testName;
         private final 
     }
 }
