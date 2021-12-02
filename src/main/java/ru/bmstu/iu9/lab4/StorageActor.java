@@ -8,6 +8,8 @@ import java.util.List;
 
 public class StorageActor extends AbstractActor {
 
+    
+
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
@@ -15,7 +17,15 @@ public class StorageActor extends AbstractActor {
 
                 })
                 .match(String.class, id -> {
-                    getSender().tell(TestPackage, self);
+                    getSender().tell(getResults(id), self());
                 }).build();
+    }
+
+    private void putTestResult(TestPackage.Test test) {
+
+    }
+
+    private TestPackage getResults(String id) {
+        return null;
     }
 }
