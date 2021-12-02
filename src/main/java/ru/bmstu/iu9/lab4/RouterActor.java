@@ -20,7 +20,7 @@ public class RouterActor extends AbstractActor {
 
     @Override
     public Receive createReceive() {
-        return receiveBuilder.create()
+        return ReceiveBuilder.create()
                 .match()
     }
 }
