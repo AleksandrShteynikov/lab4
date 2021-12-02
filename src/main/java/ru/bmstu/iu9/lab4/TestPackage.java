@@ -65,5 +65,11 @@ public class TestPackage {
         public String getExpectedRes() {
             return expectedRes;
         }
+
+        public String getResult() {
+            return result;
+        }
+
+        
     }
 }
