@@ -7,6 +7,7 @@ import akka.actor.Props;
 import akka.http.javadsl.ConnectHttp;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
+import akka.http.javadsl.marshallers.jackson.Jackson;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
@@ -35,9 +36,11 @@ public class JSTester {
         System.in.read();
         binding.thenCompose(ServerBinding::unbind).thenAccept(unbound->system.terminate());
     }
-    private Route createRoute(ActorSystem system) {
+    private Route createRoute(ActorRef router) {
         return route(
-                path("api", () -> route(get()))
+                path("api", () -> route(get())),
+                path("api", () -> route(post(() -> entity(Jackson.unmarshaller(TestPackage.class), msg ->
+                                                                  ))))
         );
     }
 }
