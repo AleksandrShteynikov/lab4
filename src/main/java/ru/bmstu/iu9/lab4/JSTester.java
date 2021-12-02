@@ -16,7 +16,7 @@ public class JSTester {
     static final int POOL_SIZE = 5;
     public static void main(String[] args) {
         ActorSystem system = ActorSystem.create(AKKA_SYSTEM_NAME);
-        ActorRef router = getContext().actorOf(Props.create(RouterActor.class));
+        ActorRef router = .actorOf(Props.create(RouterActor.class));
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         JSTester instance = new JSTester();
