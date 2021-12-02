@@ -23,6 +23,8 @@ import java.util.concurrent.CompletionStage;
 
 public class JSTester {
     static final int PORT = 8080;
+    static final int TIMEOUT = 5000;
+    static final String ID_PARAM = "packageId";
     static final String AKKA_SYSTEM_NAME = "Akka JS Tester";
     static final String HOST_NAME = "localhost";
     static final String SERVER_MSG = "Server online at http://" + HOST_NAME + ":" + PORT +"/\nPress RETURN to stop...";
@@ -34,16 +36,16 @@ public class JSTester {
         JSTester instance = new JSTester();
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = instance.createRoute(router).flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(routeFlow,
-                                                                          ConnectHttp.toHost("localhost", 8080),
+                                                                          ConnectHttp.toHost(HOST_NAME, PORT),
                                                                           materializer);
-        System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
+        System.out.println(SERVER_MSG);
         System.in.read();
         binding.thenCompose(ServerBinding::unbind).thenAccept(unbound->system.terminate());
     }
     private Route createRoute(ActorRef router) {
         return route(
-                path("api", () -> route(get(() -> parameter("packageId", id -> {
-                    Future<Object> result = Patterns.ask(router, id, 5000);
+                path("api", () -> route(get(() -> parameter(ID_PARAM, id -> {
+                    Future<Object> result = Patterns.ask(router, id, TIMEOUT);
                     return completeOKWithFuture(result, Jackson.marshaller());
                 })))),
                 path("api", () -> route(post(() -> entity(Jackson.unmarshaller(TestPackage.class), msg -> {
