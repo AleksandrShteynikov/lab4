@@ -29,7 +29,7 @@ public class RouterActor extends AbstractActor {
                     String funcName = testPackage.getFuncName();
                     List<TestPackage.Test> tests = testPackage.getTests();
                     for (TestPackage.Test test : tests) {
-                        router.route();
+                        router.tell(test, getSender());
                     }
                 })
                 .match(String.class, id -> {
