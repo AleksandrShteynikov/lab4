@@ -41,6 +41,15 @@ public class TestPackage {
 
     static class Test {
         private final String testName;
-        private final 
+        private final Object[] data;
+        private final String expectedRes;
+        private String result;
+    }
+
+    @JsonCreator
+    public Test(@JsonProperty("testName") String id,
+                @JsonProperty("") String script,
+                @JsonProperty("functionName") String funcName,) {
+
     }
 }
