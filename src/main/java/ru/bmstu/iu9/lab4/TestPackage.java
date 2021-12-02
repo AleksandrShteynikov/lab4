@@ -41,15 +41,29 @@ public class TestPackage {
 
     static class Test {
         private final String testName;
-        private final Object[] data;
+        private final Object[] params;
         private final String expectedRes;
         private String result;
-    }
 
-    @JsonCreator
-    public Test(@JsonProperty("testName") String id,
-                @JsonProperty("") String script,
-                @JsonProperty("functionName") String funcName,) {
+        @JsonCreator
+        public Test(@JsonProperty("testName") String testName,
+                    @JsonProperty("params") Object[] params,
+                    @JsonProperty("expectedResult") String expectedRes) {
+            this.testName = testName;
+            this.params = params;
+            this.expectedRes = expectedRes;
+        }
 
+        public void setResult(String result) {
+            this.result = result;
+        }
+
+        public String getTestName() {
+            return testName;
+        }
+
+        public String getExpectedRes() {
+            return expectedRes;
+        }
     }
 }
