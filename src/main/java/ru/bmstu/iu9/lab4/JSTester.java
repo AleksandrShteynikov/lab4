@@ -42,7 +42,8 @@ public class JSTester {
     private Route createRoute(ActorRef router) {
         return route(
                 path("api", () -> route(get(() -> {
-                    Future<Object> result = Patterns.ask(, )
+                    Future<Object> result = Patterns.ask(router, idrequest(), 5000);
+                    return completeOKWithFuture(result, Jackson.marshaller());
                 }))),
                 path("api", () -> route(post(() -> entity(Jackson.unmarshaller(TestPackage.class), msg -> {
                     router.tell(msg, ActorRef.noSender());
