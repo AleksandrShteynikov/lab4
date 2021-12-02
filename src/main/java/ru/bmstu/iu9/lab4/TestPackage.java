@@ -1,5 +1,6 @@
 package ru.bmstu.iu9.lab4;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -11,6 +12,7 @@ public class TestPackage {
     private final String funcName;
     private final List<Test> tests;
 
+    @JsonCreator
     public TestPackage(@JsonProperty("packageId") String id,
                        @JsonProperty("jsScript") String script,
                        @JsonProperty("functionName") String funcName,
@@ -38,6 +40,6 @@ public class TestPackage {
     }
 
     static class Test {
-        
+        private final 
     }
 }
