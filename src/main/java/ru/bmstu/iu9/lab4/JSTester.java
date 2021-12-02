@@ -30,6 +30,7 @@ public class JSTester {
     private static final String SERVER_MSG = "Server online at http://" + HOST_NAME + ":" + PORT +"/\nPress RETURN to stop...";
     private static final String URL_EXT = "api";
     private static final String RET_MSG = "Test started";
+
     public static void main(String[] args) throws IOException {
         ActorSystem system = ActorSystem.create(AKKA_SYSTEM_NAME);
         ActorRef router = system.actorOf(Props.create(RouterActor.class));

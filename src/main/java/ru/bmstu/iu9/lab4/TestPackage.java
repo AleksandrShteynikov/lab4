@@ -70,6 +70,8 @@ public class TestPackage {
             return result;
         }
 
-        
+        public Object[] getParams() {
+            return params;
+        }
     }
 }
