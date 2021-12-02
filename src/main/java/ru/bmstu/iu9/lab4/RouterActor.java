@@ -6,5 +6,7 @@ public class RouterActor {
     private ActorRef router;
     private ActorRef storage;
 
+    public RouterActor() extends {
 
+    }
 }
