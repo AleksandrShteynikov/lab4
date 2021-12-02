@@ -25,7 +25,7 @@ public class RouterActor extends AbstractActor {
 
                 })
                 .match(String.class, id -> {
-                    
+                    storage.tell(id, sender());
                 }).build();
     }
 }
