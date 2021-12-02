@@ -4,6 +4,10 @@ import java.util.List;
 
 public class TestPackage {
 
+    private final String id;
+    private final String script;
+    private final String funcName;
+
     public TestPackage() {
 
     }
