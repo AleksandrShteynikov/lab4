@@ -11,8 +11,14 @@ public class TestPackage {
     private final String funcName;
     private final List<Test> tests;
 
-    public TestPackage(@JsonProperty("")) {
-
+    public TestPackage(@JsonProperty("") String id,
+                       @JsonProperty("") String script,
+                       @JsonProperty("") String funcName,
+                       @JsonProperty("") List<Test> tests) {
+        this.id = id;
+        this.script = script;
+        this.funcName = funcName;
+        this.tests = tests;
     }
 
     public String getID() {
