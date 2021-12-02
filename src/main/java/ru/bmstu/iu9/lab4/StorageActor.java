@@ -8,12 +8,14 @@ import java.util.List;
 
 public class StorageActor extends AbstractActor {
 
-    
+
+
+    public StorageActor() {}
 
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(TestPackage.Test.class, test -> {
+                .match(SingleTest.class, test -> {
 
                 })
                 .match(String.class, id -> {
@@ -21,7 +23,7 @@ public class StorageActor extends AbstractActor {
                 }).build();
     }
 
-    private void putTestResult(TestPackage.Test test) {
+    private void putTestResult(SingleTest test) {
 
     }
 
