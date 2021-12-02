@@ -10,7 +10,7 @@ public class JSTester {
         ActorSystem system = ActorSystem.create(AKKA_SYSTEM_NAME);
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
-        JSTester instance = new JSTester(system);
+        JSTester instance = new JSTester();
 
     }
 }
