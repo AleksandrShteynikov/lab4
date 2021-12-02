@@ -42,7 +42,7 @@ public class JSTester {
         System.in.read();
         binding.thenCompose(ServerBinding::unbind).thenAccept(unbound->system.terminate());
     }
-    
+
     private Route createRoute(ActorRef router) {
         return route(
                 path("api", () -> route(get(() -> parameter(ID_PARAM, id -> {
