@@ -30,9 +30,15 @@ public class TesterActor extends AbstractActor {
         String expectedRes = test.getTest().getExpectedRes();
         try {
             output = execute(test.getScript(), test.getFuncName(), test.getTest().getParams());
+            if (output.equals(expectedRes)) {
+                result = SUCCESS_MSG;
+            } else {
+                result = FAILURE_MSG;
+            }
         } catch (ScriptException | NoSuchMethodException e) {
             result = CRASH_MSG;
         }
+        return result;
     }
 
     private String execute(String jscript, String functionName, Object[] params) throws ScriptException, NoSuchMethodException {
