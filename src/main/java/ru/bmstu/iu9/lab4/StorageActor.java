@@ -4,11 +4,12 @@ import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class StorageActor extends AbstractActor {
 
-    private Map<String, TestResult> results = new HashMap<>();
+    private Map<String, List<TestResult>> results = new HashMap<>();
 
     public StorageActor() {}
 
@@ -24,7 +25,12 @@ public class StorageActor extends AbstractActor {
     }
 
     private void putTestResult(TestResult test) {
+        if (results.containsKey(test.getId())) {
 
+        } else {
+            results.put(test.getId(), new List<TestResult>()) {
+            });
+        }
     }
 
     private TestPackage getResults(String id) {
