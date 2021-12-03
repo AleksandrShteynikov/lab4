@@ -33,8 +33,7 @@ public class StorageActor extends AbstractActor {
         }
     }
 
-    private TestPackage getResults(String id) {
-        //ReturnResult.Test test =
-        //return new ReturnResult(id, results.get(id));
+    private ReturnResult getResults(String id) {
+        return new ReturnResult(id, results.get(id));
     }
 }
