@@ -28,8 +28,7 @@ public class StorageActor extends AbstractActor {
         if (results.containsKey(test.getId())) {
 
         } else {
-            results.put(test.getId(), new List<TestResult>()) {
-            });
+            results.put(test.getId(), new ArrayList<TestResult>());
         }
     }
 
