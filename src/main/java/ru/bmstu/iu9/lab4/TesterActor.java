@@ -10,7 +10,8 @@ public class TesterActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match()
-                .build();
+                .match(SingleTest.class, test -> {
+                    
+                }).build();
     }
 }
