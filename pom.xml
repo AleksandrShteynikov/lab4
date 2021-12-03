@@ -20,7 +20,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>main.JSTester</mainClass>
+                            <mainClass>JSTester</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
