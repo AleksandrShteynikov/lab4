@@ -9,6 +9,9 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 public class TesterActor extends AbstractActor {
+    private final static String CRASH_MSG = "test crashed";
+    private final static String SUCCESS_MSG = "OK";
+    private final static String FAILURE_MSG = "FAILED";
 
     public TesterActor() {}
 
@@ -22,11 +25,13 @@ public class TesterActor extends AbstractActor {
     }
 
     private String perform(SingleTest test) {
+        String output;
         String result;
+        String expectedRes = test.getTest().getExpectedRes();
         try {
-            result = execute(test.getScript(), test.getFuncName(), test.getTest().getParams());
+            output = execute(test.getScript(), test.getFuncName(), test.getTest().getParams());
         } catch (ScriptException | NoSuchMethodException e) {
-            e.printStackTrace();
+            result = CRASH_MSG;
         }
     }
 
