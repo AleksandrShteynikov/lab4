@@ -22,10 +22,12 @@ public class TesterActor extends AbstractActor {
     }
 
     private String perform(SingleTest test) {
+        String result;
         try {
-
+            result = execute(test.getScript(), test.getFuncName(), test.getTest().getParams());
+        } catch (ScriptException | NoSuchMethodException e) {
+            e.printStackTrace();
         }
-        catch()
     }
 
     private String execute(String jscript, String functionName, Object[] params) throws ScriptException, NoSuchMethodException {
