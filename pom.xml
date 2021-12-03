@@ -20,7 +20,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>JSTester</mainClass>
+                            <mainClass>ru.bmstu.iu9.lab4.JSTester</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
