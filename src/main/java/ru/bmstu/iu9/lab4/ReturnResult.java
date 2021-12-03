@@ -7,11 +7,17 @@ public class ReturnResult {
     private final List<Test> tests;
 
     public ReturnResult(String id, List<Test> tests) {
-        this.tests = tests;
         this.id = id;
+        this.tests = tests;
     }
 
     static class Test {
+        private final String testName;
+        private final String result;
 
+        public Test(String testName, String result) {
+            this.testName = testName;
+            this.result = result;
+        }
     }
 }
