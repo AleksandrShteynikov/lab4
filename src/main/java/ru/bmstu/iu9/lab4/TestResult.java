@@ -10,4 +10,16 @@ public class TestResult {
         this.testName = testName;
         this.result = result;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public String getTestName() {
+        return testName;
+    }
 }
