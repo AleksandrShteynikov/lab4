@@ -11,7 +11,12 @@ public class TesterActor extends AbstractActor {
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(SingleTest.class, test -> {
-                    
+                    String result = perform(test);
+                    getSender().tell(new TestResult(test.getId(), test.getFuncName(), result), self());
                 }).build();
+    }
+
+    private String perform(SingleTest test) {
+        
     }
 }
