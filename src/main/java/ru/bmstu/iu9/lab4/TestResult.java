@@ -2,24 +2,36 @@ package ru.bmstu.iu9.lab4;
 
 public class TestResult {
     private final String id;
-    private final String testName;
-    private final String result;
+    private final Test test;
 
     public TestResult(String id, String testName, String result) {
         this.id = id;
-        this.testName = testName;
-        this.result = result;
+        this.test = new Test(testName, result);
     }
 
     public String getId() {
         return id;
     }
 
-    public String getResult() {
-        return result;
+    public Test getTest() {
+        return test;
     }
 
-    public String getTestName() {
-        return testName;
+    static class Test {
+        private final String testName;
+        private final String result;
+
+        public Test(String testName, String result) {
+            this.testName = testName;
+            this.result = result;
+        }
+
+        public String getTestName() {
+            return testName;
+        }
+
+        public String getResult() {
+            return result;
+        }
     }
 }
