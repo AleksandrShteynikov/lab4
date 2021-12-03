@@ -22,7 +22,7 @@ public class TesterActor extends AbstractActor {
     }
 
     private String perform(SingleTest test) {
-        
+
     }
 
     private String execute(String jscript, String functionName, Object[] params) throws ScriptException, NoSuchMethodException {
