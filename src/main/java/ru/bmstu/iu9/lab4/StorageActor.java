@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class StorageActor extends AbstractActor {
+    private static final String RESULT_ABSENCE = "package with provided id isn't present";
 
     private final Map<String, List<TestResult.Test>> results = new HashMap<>();
 
@@ -34,9 +35,9 @@ public class StorageActor extends AbstractActor {
     }
 
     private ReturnResult getResults(String id) {
-        if (results.containsKey(id)) {
+        //if (results.containsKey(id)) {
             return new ReturnResult(id, results.get(id));
-        }
-        return new ReturnResult("package with id " + id + " isn't present", null);
+        //}
+        //return new ReturnResult(RESULT_ABSENCE, null);
     }
 }
