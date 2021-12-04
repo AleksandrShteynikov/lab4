@@ -10,4 +10,12 @@ public class ReturnResult {
         this.id = id;
         this.tests = tests;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public List<TestResult.Test> getTests() {
+        return tests;
+    }
 }

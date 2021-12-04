@@ -20,7 +20,7 @@ public class TesterActor extends AbstractActor {
         return ReceiveBuilder.create()
                 .match(SingleTest.class, test -> {
                     String result = perform(test);
-                    getSender().tell(new TestResult(test.getId(), test.getFuncName(), result), self());
+                    getSender().tell(new TestResult(test.getId(), test.getTest().getTestName(), result), self());
                 }).build();
     }
 

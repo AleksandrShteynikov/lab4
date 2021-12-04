@@ -10,7 +10,7 @@ public class SingleTest {
     public SingleTest(String id, String script, String funcName, TestPackage.Test test) {
         this.id = id;
         this.script = script;
-        this. funcName = funcName;
+        this.funcName = funcName;
         this.test = test;
     }
 
