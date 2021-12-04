@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class StorageActor extends AbstractActor {
-    private static final String RESULT_ABSENCE = "package with provided id isn't present";
+    private static final String RESULT_ABSENCE = "tests for package with provided id aren't present";
 
     private final Map<String, List<TestResult.Test>> results = new HashMap<>();
 
