@@ -12,6 +12,7 @@ public class TesterActor extends AbstractActor {
     private final static String CRASH_MSG = "test crashed";
     private final static String SUCCESS_MSG = "OK";
     private final static String FAILURE_MSG = "FAILED";
+    private final static String ENGINE = "nashorn";
 
     public TesterActor() {}
 
@@ -42,7 +43,7 @@ public class TesterActor extends AbstractActor {
     }
 
     private String execute(String jscript, String functionName, Object[] params) throws ScriptException, NoSuchMethodException {
-        ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+        ScriptEngine engine = new ScriptEngineManager().getEngineByName(ENGINE);
         engine.eval(jscript);
         Invocable invocable = (Invocable) engine;
         return invocable.invokeFunction(functionName, params).toString();
