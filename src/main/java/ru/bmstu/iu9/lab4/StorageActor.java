@@ -35,9 +35,9 @@ public class StorageActor extends AbstractActor {
     }
 
     private ReturnResult getResults(String id) {
-        //if (results.containsKey(id)) {
+        if (results.containsKey(id)) {
             return new ReturnResult(id, results.get(id));
-        //}
-        //return new ReturnResult(RESULT_ABSENCE, null);
+        }
+        return new ReturnResult(RESULT_ABSENCE, null);
     }
 }
